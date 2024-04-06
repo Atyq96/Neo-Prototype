@@ -70,25 +70,15 @@ function createHamburgerMenu() {
   // Append the navigation menu to the document body or any desired container
   $("body").append(navMenu);
 
+  // Add 'active' class to the navigation menu
+  navMenu.addClass("active");
+
   // Add click event listener to the menu button
   menuButton.on("click", function () {
     // Toggle the 'active' class on the menu button
     menuButton.toggleClass("active");
     // Toggle the 'active' class on the navigation menu
     navMenu.toggleClass("active");
-  });
-
-  // Close the menu when clicking outside of it
-  $(document).on("click", function (event) {
-    if (
-      !menuButton.is(event.target) &&
-      !navMenu.is(event.target) &&
-      menuButton.has(event.target).length === 0 &&
-      navMenu.has(event.target).length === 0
-    ) {
-      menuButton.removeClass("active");
-      navMenu.removeClass("active");
-    }
   });
 }
 
@@ -183,6 +173,8 @@ export const Interface = (() => {
       return target.removeClass("active");
     }
 
+  
+
     //Deactivate all config tab links
     $(".config-tab", PALETTE_HTML).removeClass("active");
     //Hide all config tab contents
@@ -240,6 +232,7 @@ export const Interface = (() => {
     $(`#${tabId}`, PALETTE_HTML).show();
   };
 
+  
   //Method - Initialize Interface
   const initialize = (meta) => {
     //Cache meta data
