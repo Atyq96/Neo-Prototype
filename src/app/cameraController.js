@@ -16,7 +16,7 @@ import { MathUtils } from "./utilities";
 //The camera startup position
 const ORBIT_CAM_POS = new Vector3(-27, 5, 10);
 //The camera lookAt target
-const ORBIT_CAM_TARGET = new Vector3(0, 3, 0);
+const ORBIT_CAM_TARGET = new Vector3(0, 3, -5);
 
 //The cinematic sequence position array
 const CINE_SEQUENCE_POINTS = [
