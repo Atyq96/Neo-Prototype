@@ -185,7 +185,7 @@ export class CameraController {
     this.stopCinematic();
 
     //Start the first shot in cinematic sequence
-    this.mCineShotsList[0].start();
+   // this.mCineShotsList[0].start();
   }
 
   //Stop cinematic camera movement

@@ -1,13 +1,3 @@
-/*
- * Project :WebGL Car Configurator
- * File: app.js
- * Description : Entry main file for app
- * Date : 10/09/2021
- * License : MIT
- * Author : RendercodeNinja
- * URL : https://github.com/RendercodeNinja
- */
-
 import $ from "jquery";
 import BaseEngine from "./baseEngine";
 import { CameraController } from "./cameraController";
@@ -30,10 +20,6 @@ class App extends BaseEngine {
 
     //Meta configuration object
     this.meta = {};
-
-    //Load the Audio track
-    this.audioTrack = new Audio("assets/audio_track.mp3");
-    this.audioTrack.volume = 0;
 
     //Create camera controller
     this.cameraController = new CameraController(
@@ -58,10 +44,7 @@ class App extends BaseEngine {
       this.startDemo.bind(this)
     );
     //Event Listener  - Skip Intro button click
-    $("#btn-skip-intro")[0].addEventListener(
-      "click",
-      this.skipIntro.bind(this)
-    );
+    $("#btn-start-demo")[0].addEventListener("click", this.skipIntro.bind(this));
     //Event Listener - Cinematic shots completed
     this.cameraController.setOnCineComplete(this.skipIntro.bind(this));
 
@@ -153,25 +136,21 @@ class App extends BaseEngine {
       element.remove();
 
       //Fade In Welcome screen
-      AnimUtils.fadeElementIn($("#welcome-screen")[0], 900, {
+     AnimUtils.fadeElementIn($("#welcome-screen")[0], 900, {
         display: "flex",
-      });
+      }); 
     });
 
     //Start cinematic shots sequence
-    this.cameraController.startCinematic();
-
-    //Start audio track with fade-in the audio
-    AnimUtils.fadeAudioIn(this.audioTrack, 2000, { max: 0.5 });
+    //this.cameraController.startCinematic();
   }
 
   //Skip cinematic intro
   skipIntro() {
     //Fade Audio Track and remove
-    AnimUtils.fadeAudioOut(this.audioTrack, 2000, (audio) => audio.remove());
-
+    //AnimUtils.fadeAudioOut(this.audioTrack, 2000, (audio) => audio.remove());
     //Start fading in the screen
-    AnimUtils.fadeElementIn(
+     AnimUtils.fadeElementIn(
       $("#screen-fader")[0],
       900,
       { display: "flex" },
@@ -190,9 +169,12 @@ class App extends BaseEngine {
         AnimUtils.fadeElementOut(fader, 900);
         //Fade In Github Authoring
         AnimUtils.fadeElementIn($("#app-authoring")[0], 900);
-      }
-    );
+      }  
+      
+  
+    ); 
   }
+
 
   //App Update
   update() {
